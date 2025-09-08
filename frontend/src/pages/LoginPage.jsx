@@ -5,22 +5,19 @@ import useLogin from "../hooks/useLogin";
 
 export default function LoginPage() {
   const [loginData, setLoginData] = useState({
-    email: "sourabh50.personal@gmail.com",
-    password: "123456",
+    email: "",
+    password: "",
   });
 
- const {loginMutation,isPending,error} = useLogin();
+  const { loginMutation, isPending, error } = useLogin();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     loginMutation(loginData);
-  }
+  };
 
   return (
-    <div
-      className="flex justify-center items-center h-screen p-4 sm:p-6 md:p-8"
-   
-    >
+    <div className="flex justify-center items-center h-screen p-4 sm:p-6 md:p-8">
       <div className="border border-primary/25 flex flex-col  lg:flex-row w-full max-w-5xl mx-auto rounded-xl shadow-lg overflow-hidden bg-base-100 ">
         {/*LOGIN FORM SECTION */}
         <div className="w-full lg:w-1/2 p-4 sm:p-6 flex flex-col">
