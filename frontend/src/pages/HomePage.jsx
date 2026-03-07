@@ -18,6 +18,7 @@ import NoFriendsFound from "../components/NoFriendsFound";
 import getLanguageFlag from "../utilityFunction/getLanguageFlag";
 import capitalize from "../utilityFunction/capitalize";
 import toast from "react-hot-toast";
+import profilePic from "/profilePic.png"
 
 export default function HomePage() {
   const queryClient = useQueryClient();
@@ -54,7 +55,7 @@ export default function HomePage() {
     onError: (error) => {
       toast.error(error.response.data.message);
     },
-    retry:false,
+    retry: false,
   });
 
   useEffect(() => {
@@ -86,7 +87,7 @@ export default function HomePage() {
         ) : friends.length === 0 ? (
           <NoFriendsFound />
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 ">
             {friends.map((friend) => (
               <FriendCard key={friend._id} friend={friend} />
             ))}
@@ -132,7 +133,9 @@ export default function HomePage() {
                     <div className="card-body p-5 space-y-4">
                       <div className="flex items-center gap-3">
                         <div className="avatar size-16 rounded-full">
-                          <img src={user.profilePic} alt={user.fullName} />
+                          <img src={user.profilePic} alt={user.fullName} onError={(e) => {
+                                        e.target.src = {profilePic};
+                                      }} />
                         </div>
 
                         <div>

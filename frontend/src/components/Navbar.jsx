@@ -3,6 +3,7 @@ import useAuthUser from "../hooks/UseAuthUser"
 import { BellIcon, LogOutIcon, ShipWheelIcon } from "lucide-react";
 import ThemeSelector from "./ThemeSelector";
 import UseLogout from "../hooks/UseLogout";
+import profilePic from "/profilePic"
 
 export default function Navbar() {
     const {authUser} = useAuthUser();
@@ -35,7 +36,9 @@ export default function Navbar() {
           <ThemeSelector />
           <div className="avatar">
             <div className="w-9 rounded-full">
-              <img src={authUser?.profilePic} alt="User Avatar" />
+              <img src={authUser?.profilePic} alt="User Avatar" onError={(e) => {
+                            e.target.src = profilePic;
+                          }}/>
             </div>
           </div>
        

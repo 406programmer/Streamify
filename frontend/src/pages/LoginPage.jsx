@@ -15,7 +15,7 @@ export default function LoginPage() {
     e.preventDefault();
     loginMutation(loginData);
   };
-
+  
   return (
     <div className="flex justify-center items-center h-screen p-4 sm:p-6 md:p-8">
       <div className="border border-primary/25 flex flex-col  lg:flex-row w-full max-w-5xl mx-auto rounded-xl shadow-lg overflow-hidden bg-base-100 ">
@@ -31,7 +31,7 @@ export default function LoginPage() {
           {/*Error Message Display*/}
           {error && (
             <div className="alert alert-error mb-4">
-              <span>{error?.response?.data?.message}</span>{" "}
+              <span>{error?.response?.data?.message ?error.response.data.message:"Something went wrong" }</span>{" "}
             </div>
           )}
           <div className="w-full">
