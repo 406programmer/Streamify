@@ -3,7 +3,7 @@ import useAuthUser from "../hooks/UseAuthUser"
 import { BellIcon, LogOutIcon, ShipWheelIcon } from "lucide-react";
 import ThemeSelector from "./ThemeSelector";
 import UseLogout from "../hooks/UseLogout";
-import profilePic from "/profilePic"
+import profilePic from "/profilePic.png"
 
 export default function Navbar() {
     const {authUser} = useAuthUser();
