@@ -37,7 +37,7 @@ export default function Navbar() {
           <div className="avatar">
             <div className="w-9 rounded-full">
               <img src={authUser?.profilePic} alt="User Avatar" onError={(e) => {
-                            e.target.src = {profilePic};
+                            e.target.src = profilePic;
                           }}/>
             </div>
           </div>

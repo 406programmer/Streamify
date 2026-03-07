@@ -134,7 +134,7 @@ export default function HomePage() {
                       <div className="flex items-center gap-3">
                         <div className="avatar size-16 rounded-full">
                           <img src={user?.profilePic} alt={user.fullName} onError={(e) => {
-                                        e.target.src = {profilePic};
+                                        e.target.src = profilePic;
                                       }} />
                         </div>
 
