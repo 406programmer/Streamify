@@ -22,14 +22,16 @@ export async function signup(req, res) {
         return res.status(400).json({message:"Email already exists, please provide a different email"});
     }
 
-    const idx = Math.floor(Math.random() * 100)+1
-    const randomAvatar = `https://avatar.iran.liara.run/public/${idx}`;
+     const seed = Math.random().toString(36).substring(2);
+     const svgCode = multiavatar(seed);
+     const base64 = btoa(svgCode);
+     const url = `data:image/svg+xml;base64,${base64}`;
 
     const newUser = await User.create({
         fullName,
         email,
         password,
-        profilePic:randomAvatar
+        profilePic:url
     });
     try {
         await upsertStreamUser({

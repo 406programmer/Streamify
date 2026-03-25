@@ -45,9 +45,11 @@ export default function ChatPage() {
           {
             id: authUser._id,
             name: authUser.fullName,
-            image: authUser.profilePic,
+            image:
+              // authUser.profilePic ||
+              `https://ui-avatars.com/api/?name=${authUser.fullName.replace(" ","+")}&background=0D8ABC&color=fff`,
           },
-          tokenData.token
+          tokenData.token,
         );
 
         const channelId = [authUser._id, targetUserId].sort().join("-");

@@ -9,7 +9,7 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import path from 'path'
 
-const app = express();
+const app = express({limit :"5mb"});
 const __dirname = path.resolve();
 
 dotenv.config();

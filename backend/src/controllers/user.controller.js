@@ -87,7 +87,7 @@ export const sendFriendRequest = async (req,res)=>{
         recipient:recipientId,
     });
     await friendRequest.save();
-    console.log("friendRequest : " ,friendRequest);
+    // console.log("friendRequest : " ,friendRequest);
     res.status(201).json(friendRequest);
  } catch (error) {
     console.error('Error sending friend request:',error);
@@ -101,17 +101,13 @@ export const acceptFriendRequest = async (req,res)=>{
         const {id : senderId}= req.params;
         const friendRequest = await FriendRequest.findById(senderId);
 
-        console.log("friendRequest object in acceptFriendRequest : ",friendRequest);
+        // console.log("friendRequest object in acceptFriendRequest : ",friendRequest);
 
         if(!friendRequest){
             return res.status(404).json({message:"Friend request not found"});
         }
 
-         // verify that the current user is the recipient of the friend request
-         console.log(typeof friendRequest.recipient);
-         console.log("friendRequest.recipient : ", friendRequest.recipient);
-         console.log(typeof req.user.id);
-         console.log("req.user : ", req.user);
+         
         if(friendRequest.recipient.toString() != req.user._id){
             return res.status(403).json({message:"You are not authorized to accept this friend request"});
         }

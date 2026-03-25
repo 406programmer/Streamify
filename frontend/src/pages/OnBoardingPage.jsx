@@ -10,6 +10,7 @@ import {
   ShipWheelIcon,
   ShuffleIcon,
 } from "lucide-react";
+import multiavatar from "@multiavatar/multiavatar/esm";
 import { LANGUAGES } from "../constants/index";
 
 export default function OnBoardingPage() {
@@ -42,9 +43,11 @@ export default function OnBoardingPage() {
     onBoardingMutation(formState);
   };
   const handleRandomAvatar = () => {
-    const idx=Math.floor(Math.random()*100)+1;//math.random generate value from 0 to 1 in decimal then its is multiplied by 100 then floor it which makes the range from 0 to 99 then we add one which make the range 1-100
-    const randomAvatar = `https://avatar.iran.liara.run/public/${idx}.png`;
-    setFormState({...formState,profilePic:randomAvatar})
+    const seed = Math.random().toString(36).substring(2);
+   const svgCode = multiavatar(seed);
+   const base64 = btoa(svgCode);
+   const url = `data:image/svg+xml;base64,${base64}`;
+        setFormState({...formState,profilePic:url})
     toast.success("Random profile pic generated!")
   };
 
